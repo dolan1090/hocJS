@@ -7,8 +7,11 @@
     <title>Máy tính casino</title>
   </head>
   <body>
+    <input id="itemManHinh" value="" disabled />
+
+    <br /><br />
+
     <section class="casino=box">
-      <input id="itemManHinh" value="" disabled />
       <button class="item" onclick="hienThi('0')" value="0">0</button>
       <button class="item" onclick="hienThi('1')" value="1">1</button>
       <button class="item" onclick="hienThi('2')" value="2">2</button>
@@ -27,15 +30,30 @@
       <button class="item" onclick="xoaHet()">Xóa</button>
     </section>
 
+    <br /><br />
+
+    <section class="giai-pt-bac-1">
+      <input class="soA" value="" placeholder="Số a ..." type="number" />
+      <input class="soB" value="" placeholder="Số b ..." type="number" />
+      <button onclick="giai_pt_bac_1()">Giải phương trình a*x + b = 0</button>
+    </section>
+
     <script>
       function hienThi(hienThiBatKy) {
         document.getElementById("itemManHinh").value += hienThiBatKy;
       }
       function bang() {
-        document.getElementById("itemManHinh").value = eval(document.getElementById("itemManHinh").value);
+        document.getElementById("itemManHinh").value = eval(
+          document.getElementById("itemManHinh").value
+        );
       }
       function xoaHet() {
         document.getElementById("itemManHinh").value = "";
+      }
+      function giai_pt_bac_1() {
+        var a = document.querySelector(".giai-pt-bac-1 .soA").value;
+        var b = document.querySelector(".giai-pt-bac-1 .soB").value;
+        document.getElementById("itemManHinh").value = -b/a;
       }
     </script>
   </body>
