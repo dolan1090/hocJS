@@ -7,7 +7,7 @@
     <title>Máy tính casino</title>
   </head>
   <body>
-    <input id="itemManHinh" value="" disabled />
+    <input id="itemManHinh" value="" disabled style=" width: 99%; " />
 
     <br /><br />
 
@@ -26,17 +26,22 @@
       <button class="item" onclick="hienThi('-')" value="-">-</button>
       <button class="item" onclick="hienThi('*')" value="*">*</button>
       <button class="item" onclick="hienThi('/')" value="/">/</button>
+      <button class="item" onclick="hienThi('**')" value="**">^</button>
       <button class="item" onclick="bang()">=</button>
       <button class="item" onclick="xoaHet()">Xóa</button>
     </section>
 
     <br /><br />
 
-    <section class="giai-pt-bac-1">
-      <input class="soA" value="" placeholder="Số a ..." type="number" />
-      <input class="soB" value="" placeholder="Số b ..." type="number" />
-      <button onclick="giai_pt_bac_1()">Giải phương trình a*x + b = 0</button>
-    </section>
+    <section class="giai-pt">
+        <input class="soA" value="" placeholder="Số a ..." type="number" />
+        <input class="soB" value="" placeholder="Số b ..." type="number" />
+        <input class="soC" value="" placeholder="Số c ..." type="number" />
+        <br /><br />
+        <div><button onclick="giai_pt_bac_1()">Giải phương trình a*x + b = 0</button></div>
+        <br />
+        <div></div><button onclick="giai_pt_bac_2()">Giải phương trình a*x^2 + b*x + c = 0</button></div>
+      </section>
 
     <script>
       function hienThi(hienThiBatKy) {
@@ -51,9 +56,18 @@
         document.getElementById("itemManHinh").value = "";
       }
       function giai_pt_bac_1() {
-        var a = document.querySelector(".giai-pt-bac-1 .soA").value;
-        var b = document.querySelector(".giai-pt-bac-1 .soB").value;
-        document.getElementById("itemManHinh").value = -b/a;
+        var a = document.querySelector(".giai-pt .soA").value;
+        var b = document.querySelector(".giai-pt .soB").value;
+        document.getElementById("itemManHinh").value = (-b/a).toFixed(2);
+      }
+      function giai_pt_bac_2() {
+        var a = document.querySelector(".giai-pt .soA").value;
+        var b = document.querySelector(".giai-pt .soB").value;
+        var c = document.querySelector(".giai-pt .soC").value;
+        var delta = b**2 - 4*a*c;
+        var canDelta = Math.sqrt(delta);
+        console.log(canDelta);
+        document.getElementById("itemManHinh").value = 'Nghiệm 1 là ' + ((-b-canDelta)/(2*a)).toFixed(2) + ' Nghiệm 2 là ' + ((-b+canDelta)/(2*a)).toFixed(2);
       }
     </script>
   </body>
